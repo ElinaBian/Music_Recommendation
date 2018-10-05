@@ -48,3 +48,8 @@ Mercari, Japan’s biggest community-powered shopping app, knows this problem de
 In this competition, Mercari’s challenging you to build an algorithm that automatically suggests the right product prices. You’ll be provided user-inputted text descriptions of their products, including details like product category name, brand name, and item condition.
 
 Note that, because of the public nature of this data, this competition is a “Kernels Only” competition. In the second stage of the challenge, files will only be available through Kernels and you will not be able to modify your approach in response to new data. Read more details in the data tab and Kernels FAQ page.
+
+## e. Food Classification
+[Kaggle Link](https://www.kaggle.com/c/whats-cooking-kernels-only)
+
+Some of our strongest geographic and cultural associations are tied to a region's local foods. This playground competitions asks you to predict the category of a dish's cuisine given a list of its ingredients. 
