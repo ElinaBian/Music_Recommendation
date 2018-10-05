@@ -6,7 +6,7 @@ Advanced_Data_Analysis
     We now have 4 topics:
 
 ## a.Music Recommendation
-['Kaggle Link'](https://www.kaggle.com/c/kkbox-music-recommendation-challenge)
+[Kaggle Link](https://www.kaggle.com/c/kkbox-music-recommendation-challenge)
 
 The 11th ACM International Conference on Web Search and Data Mining (WSDM 2018) is challenging you to build a better music recommendation system using a donated dataset from KKBOX. WSDM (pronounced "wisdom") is one of the the premier conferences on web inspired research involving search and data mining. They're committed to publishing original, high quality papers and presentations, with an emphasis on practical but principled novel models.
 
@@ -19,7 +19,7 @@ WSDM has challenged the Kaggle ML community to help solve these problems and bui
 Winners will present their findings at the conference February 6-8, 2018 in Los Angeles, CA. For more information on the conference, click here, and don't forget to check out the other KKBox/WSDM competition: KKBox Music Churn Prediction Challenge.
 
 ## b.Visitors Prediction
-['Kaggle Link'](https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting)
+[Kaggle Link](https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting)
 
 Running a thriving local restaurant isn't always as charming as first impressions appear. There are often all sorts of unexpected troubles popping up that could hurt business.
 
@@ -30,7 +30,7 @@ Recruit Holdings has unique access to key datasets that could make automated fut
 In this competition, you're challenged to use reservation and visitation data to predict the total number of visitors to a restaurant for future dates. This information will help restaurants be much more efficient and allow them to focus on creating an enjoyable dining experience for their customers.
 
 ## c.Safe Driver Prediction
-['Kaggle Link'](https://www.kaggle.com/c/porto-seguro-safe-driver-prediction)
+[Kaggle Link](https://www.kaggle.com/c/porto-seguro-safe-driver-prediction)
 
 Nothing ruins the thrill of buying a brand new car more quickly than seeing your new insurance bill. The sting’s even more painful when you know you’re a good driver. It doesn’t seem fair that you have to pay so much if you’ve been cautious on the road for years.
 
@@ -39,7 +39,7 @@ Porto Seguro, one of Brazil’s largest auto and homeowner insurance companies, 
 In this competition, you’re challenged to build a model that predicts the probability that a driver will initiate an auto insurance claim in the next year. While Porto Seguro has used machine learning for the past 20 years, they’re looking to Kaggle’s machine learning community to explore new, more powerful methods. A more accurate prediction will allow them to further tailor their prices, and hopefully make auto insurance coverage more accessible to more drivers.
 
 ## d.Mercari Price Suggestion
-['Kaggle Link'](https://www.kaggle.com/c/mercari-price-suggestion-challenge)
+[Kaggle Link](https://www.kaggle.com/c/mercari-price-suggestion-challenge)
 
 Product pricing gets even harder at scale, considering just how many products are sold online. Clothing has strong seasonal pricing trends and is heavily influenced by brand names, while electronics have fluctuating prices based on product specs.
 
