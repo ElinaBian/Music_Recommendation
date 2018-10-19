@@ -68,3 +68,16 @@ composer_count <- top_100(songs, "composer")
 language_count <- top_100(songs, "language")
 ```
 
+Genre id is a multi label column with a minumum label of 1 to a maximum label of 8.
+There are 192 unique genres and some missing values as well.
+```{r}
+genre_count <- songs %>% 
+                  separate(genre_ids, c("one", "two", "three", "four", "five", "six", "seven", "eight"), extra="merge") %>% 
+                  select(one:eight)%>% 
+                  gather(one:eight, key="nth_id", value="genre_ids", na.rm=TRUE) %>% 
+                  group_by(genre_ids) %>% 
+                  count %>% 
+                  arrange(desc(n)) %>% 
+                  print()
+```
+
