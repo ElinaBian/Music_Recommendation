@@ -95,6 +95,7 @@ members %>%
             gender_age =sum(ga))
 
 #should we remove these rows?
+#just keep them now. Possibly be useful someway
 ```
 
 ```{r}
