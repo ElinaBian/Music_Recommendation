@@ -1,0 +1,104 @@
+---
+title: "Untitled"
+author: "Mengjia Huang"
+date: "2018/10/18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+members<-read.csv("/Users/lingyizhao/Desktop/5291 proj/members.csv")
+```
+
+
+```{r}
+library(dplyr)
+library(ggplot2)
+members_colgroup <- function(df,col_name, x, y, title, xmin, xmax, ymin, ymax)
+                    {
+                      
+                    temp_df <- df %>% 
+                                  group_by_(col_name) %>% 
+                                  count() %>% 
+                                  arrange(desc(n))
+                    
+                    df_plot <- temp_df %>% 
+                                    ggplot(aes_string(col_name, "n")) + 
+                                    geom_col(fill='goldenrod2') + 
+                                    labs(x = x,
+                                         y = y,
+                                         title = title) +
+                                    xlim(xmin, xmax) +
+                                    ylim(ymin, ymax) 
+                    
+                    print(df_plot)
+                    return(temp_df)
+
+}
+```
+
+```{r}
+#age
+sum(members$bd==0)
+#There are 19932 records with 0 as age. This could be either outliers or missing values.
+#Plotting in the age range 1 -100 to show the real distribution.
+members_colgroup(members, "bd", "Age", "Frequency", "Age Distribution", 1, 100, 0, 1000)
+bd<-members$bd[(members$bd<100)&(members$bd>0)]
+summary(bd)
+boxplot(bd, main="boxplot of age")
+qqnorm(bd,main="qqplot of age")
+qqline(bd)
+```
+
+
+```{r}
+#city
+members_colgroup(members, "city", "City", "Frequency", "City Distribution", 0, 25, 0, 20000)
+#City 1 seems to be highly dominating. But the number 19445 seems suspicious as it is close to the number of records with zero age. 
+city<-members$city[members$city!=1]
+city<-as.factor(city)
+summary(city)
+members_colgroup(members, "city", "City", "Frequency", "City Distribution", 1, 25, 0, 20000)
+```
+
+
+
+```{r}
+#gender
+members %>% 
+  group_by(gender) %>% 
+  count
+#Male and female are almost equal. We have a lot of missing gender.
+```
+
+```{r}
+#registered_via
+members_colgroup(members, "registered_via", "Registration Method", "Frequency", "Registration method Distribution", 0, 16, 0, 15000)
+```
+
+```{r}
+###Missing value
+#City (marked as ???1???), gender( empty character) and age(marked as 0) seems to be missing values.
+#While signing up for the app, may be these columns where not mandatory and the co existence of these values should point that they arised from the same place.
+members %>% 
+  mutate(cga = if_else(((city == 1) & (bd == 0) & (gender == "")), 1, 0),
+         cg =  if_else(((city == 1) & (gender == "")), 1, 0),
+         ca = if_else(((city == 1) & (bd == 0)), 1, 0),
+         ga =  if_else(((bd == 0) & (gender == "")), 1, 0)) %>% 
+  summarize(city_gender_age = sum(cga),
+            city_gender = sum(cg),
+            city_age = sum(ca),
+            gender_age =sum(ga))
+
+#should we remove these rows?
+```
+
+```{r}
+#Signup vs Expiration
+
+```
+

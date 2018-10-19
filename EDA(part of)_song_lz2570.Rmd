@@ -1,0 +1,70 @@
+---
+title: '5291 Songs'
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r}
+#install.packages("magrittr")
+library(magrittr)
+library(dplyr)
+songs<-read.csv("/Users/lingyizhao/Desktop/5291 proj/Songs.csv")
+
+summary(songs)
+
+
+```
+
+```{r}
+#song_length (change unit to minutes)
+library(ggplot2)
+songs %>% 
+  mutate(song_length = song_length/6e4) %>% 
+  ggplot(aes(song_length)) +
+  geom_histogram(binwidth = 0.25, fill='darkorchid3') +
+  labs(x='Song Length', y = 'Frequency', title = 'Distribution of song length') +
+  xlim(0, 15)
+
+```
+
+```{r}
+#top 100
+top_100 <- function(df, col_name)
+{
+  temp_df <- df %>% 
+    group_by_(col_name) %>% 
+    count %>% 
+    arrange(desc(n)) %>% 
+    print
+  
+  return(temp_df)
+}
+
+```
+
+```{r}
+#top100 Artists
+artist_count <- top_100(songs, "artist_name")
+
+```
+
+```{r}
+#top100 lyricist
+lyricist_count <- top_100(songs, "lyricist")
+```
+
+```{r}
+#top 100composer
+composer_count <- top_100(songs, "composer")
+```
+
+```{r}
+#top100 language
+language_count <- top_100(songs, "language")
+```
+
