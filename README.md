@@ -48,3 +48,11 @@ TensorFlow Speech Recognition Challenge
 Firstly, our data could get from [Kaggle link](https://www.kaggle.com/c/kkbox-music-recommendation-challenge/data). 
 
 Also, here is a more convenient [Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for data.
+
+# 3. Algorithm
+
+## 3.2 Algorithms Based on Clustering
+
+### 3.2.1 Train Data Split
+
+The [Google Drive Link]([Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for training and testing set are available here.
