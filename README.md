@@ -3,13 +3,13 @@ Adavanced Data Analysis Project --- Music Recommendation
 
 Table of Contents
 
-* [1. Topic Selection]()
-* [2. Data Preparation]()
-  * [2.1 Download Data]()
+* [1. Topic Selection]
+* [2. Data Preparation]
+  * [2.1 Download Data]
 * [3. Algorithms Based on Traditional Statistical Methods]()
-* [4. Algorithms Based on Clustering]()
-  * [4.1 Data Split for Training and Testing]()
-
+* [4. Algorithms Based on Clustering]
+  * [4.1 Data Split for Training and Testing]
+  * [4.2 Extracting Features]
 
 # 1. Topic Selection
 
@@ -62,4 +62,9 @@ Also, here is a more convenient [Google Drive Link](https://drive.google.com/dri
 
 ## 4.1 Data Split for Training and Testing
 
-The [Google Drive Link](https://drive.google.com/open?id=1ReUjRgrf9mIMELhEImRLT0Yi6bbFtVC1) for training and testing set are available here.
+The [Google Drive Link](https://drive.google.com/open?id=1ReUjRgrf9mIMELhEImRLT0Yi6bbFtVC1) for training and testing set after removing records with NA at 'genre_ids' are available here.
+
+## 4.2 Extracting Features
+
+The [Google Drive Link](https://drive.google.com/open?id=1jAKoTOMrZa3tvGRmGveljRkJDnlBuKyn) for saving extracted features of members are available here. You can add your features as columns. Please save your file as a new one and name it as following: 1.members_add_genre,2.members_add_xxx,3.members_add_xxx,... Do not remove or replace existed files.
+
