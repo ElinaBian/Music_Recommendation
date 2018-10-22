@@ -55,4 +55,4 @@ Also, here is a more convenient [Google Drive Link](https://drive.google.com/dri
 
 ### 3.2.1 Train Data Split
 
-The [Google Drive Link]([Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for training and testing set are available here.
+The [Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for training and testing set are available here.
