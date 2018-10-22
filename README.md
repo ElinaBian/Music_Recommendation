@@ -6,6 +6,10 @@ Table of Contents
 * [1. Topic Selection]()
 * [2. Data Preparation]()
   * [2.1 Download Data]()
+* [3. Algorithms Based on Traditional Statistical Methods]()
+* [4. Algorithms Based on Clustering]()
+  * [4.1 Data Split for Training and Testing]()
+
 
 # 1. Topic Selection
 
@@ -49,10 +53,13 @@ Firstly, our data could get from [Kaggle link](https://www.kaggle.com/c/kkbox-mu
 
 Also, here is a more convenient [Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for data.
 
-# 3. Algorithm
+# 3. Algorithms Based on Traditional Statistical Methods
 
-## 3.2 Algorithms Based on Clustering
 
-### 3.2.1 Train Data Split
 
-The [Google Drive Link](https://drive.google.com/drive/folders/1l3O6N35fd6O7AUK8qaui_pu0QXX_KBw1) for training and testing set are available here.
+
+# 4. Algorithms Based on Clustering
+
+## 4.1 Data Split for Training and Testing
+
+The [Google Drive Link](https://drive.google.com/open?id=1ReUjRgrf9mIMELhEImRLT0Yi6bbFtVC1) for training and testing set are available here.
