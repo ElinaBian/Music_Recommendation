@@ -22,6 +22,7 @@ total<-total[-c(3,4,5,10:16)]
 #save(total, file="total.csv")
 #save(total, file="total.RData")
 
+########################################## Sizhu Chen #################################
 usercount<-count(total, vars=total$msno)
 
 top_10000<-function(df, col){
@@ -45,6 +46,7 @@ for (i in 1:length(genre)){
 
 merge.expanded <- merge[rep(row.names(merge), cot),]
 
+########################################## Ye Yue #################################
 genre_split<-unlist(strsplit(genre,"\\|"))
 merge.expanded$genre_ids<-genre_split 
 
@@ -59,6 +61,7 @@ merge.expanded$weight<-weight
 
  #vvtop<-top_10000(usercount, usercount$n)[1:100,]
 
+########################################## Lingyi Zhao #################################
  merge<-subset(total, msno %in% vvtop$vars)
 
  #sepreate 7:3
