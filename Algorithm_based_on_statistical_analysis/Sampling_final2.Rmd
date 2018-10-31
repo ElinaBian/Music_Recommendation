@@ -48,7 +48,7 @@ top_10000<-function(df, col){
 }
 
 
-vvtop<-top_10000(usercount, usercount$n)[1:100,]
+vvtop<-top_10000(usercount, usercount$n)[1:1000,]
 
 merge<-subset(total, msno %in% vvtop$vars)
 
@@ -118,6 +118,8 @@ Sample each user's song for 7:3, 70% for trainset, 30% for testset. Make sure al
  testset<-setdiff(merge_new, trainset)
  trainset$weight<-trainset$language*trainset$weight
  merge_new$weight<-merge_new$language*merge_new$weight
+ save(trainset,file = "trainset.RData")
+ save(testset,file = "testset.RData")
 ```
 
 Get table for each user's (genre, language, artist) and find top genre and language and artist
@@ -203,7 +205,8 @@ for (p in unique(recommends_final$Users)){
   }
   r<-r+1
 }
-testerror<-(10-sum(score)/100)/10
+sum(score)
+testerror<-(10-sum(score)/1000)/10
 testerror
 ```
 
