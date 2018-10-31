@@ -1,0 +1,42 @@
+---
+title: "Feature EDA"
+author: "Mengjia Huang"
+date: "2018/10/28"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+setwd("/Users/minta/Desktop")
+feature<-read.csv("feature_data.csv")
+View(feature)
+```
+
+```{r}
+#length???genre-->song counts
+library(ggplot2)
+feature$genre_popular=as.factor(feature$genre_1)
+ggplot(data=feature)+
+  geom_point(mapping=aes(x=mean_song_len,y=song_counts,color=genre_popular),size=0.5)+
+  labs(title="The song counts from song lengths and the most popular genre", x="song length", y="song counts")+
+  xlim(2,6)+
+  ylim(0,2000)
+```
+
+```{r}
+#length, language--> song counts
+feature$language_popular=as.factor(feature$lang1)
+ggplot(data=feature)+
+  geom_point(mapping=aes(x=mean_song_len,y=song_counts,color=language_popular),size=0.5)+
+  labs(title="The song counts from song lengths and the most popular language", x="song length", y="song counts")+
+  xlim(2,6)+
+  ylim(0,2000)
+```
+
+```{r}
+
+```
+
