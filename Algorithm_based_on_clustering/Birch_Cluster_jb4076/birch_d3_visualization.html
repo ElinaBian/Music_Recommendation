@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> </title>
+</head>
+<body>
+	<h1> Birch Clustering Result of Numeric Features of Traing Set </h1>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src='https://rawgit.com/karpathy/tsnejs/master/tsne.js'></script>
+	<script type="text/javascript">
+		// Parameters
+		const width = 1560, 
+		 	height = 1500,
+		 	margin = 40,
+		 	colorScale = d3.scaleOrdinal(d3.schemeCategory20),
+		 	centerx = d3.scaleLinear()
+		 		.range([width / 2 - height /2 + margin, width /2 + height /2 - margin]),
+		 	centery = d3.scaleLinear()
+		 		.range([margin, height - margin]);
+
+		// Draw nodes
+		function draw(canvas, nodes){
+		 	let context = canvas.node().getContext("2d");
+		 	context.clearRect(0, 0, width, width);
+
+		 	for(var i = 0, n = nodes.length; i < n; ++i) {
+		 		var node = nodes[i];
+		 		context.beginPath();
+		 		context.moveTo(node.x, node.y);
+		 		context.arc(node.x, node.y, 20, 0, 2 * Math.PI);
+
+		 		context.lineWidth = 0.5;
+		 		context.fillStyle = node.color;
+		 		context.fill();
+
+		 		context.fillStyle = "black";
+		 		context.font = "20px Open Sans";
+		 		context.fillText(node.text, node.x, node.y);
+		 	}
+		 }
+
+		// Load data
+		d3.csv('birch.csv', function (src_data){
+			// Create t-SNE model
+			const data = src_data.map((d, i) => Object.values(d));
+
+			const canvas = d3.select("body").append("canvas")
+				.attr("width", width)
+				.attr("height", height);
+
+			const model = new tsnejs.tSNE({
+				dim: 2,
+				perplexity: 30,
+			});
+
+			var features = data.map(function(value, index) {return value.slice(1,-1);});
+			model.initDataRaw(features);
+
+
+			// Create force simulation
+			const forcetsne = d3.forceSimulation(
+				data.map(
+					d => (d.x = width / 2, d.y = height / 2, d)
+				)
+			)
+			.alphaDecay(0.005)
+			.alpha(0.1);
+
+			// Add force (Update nodes' positions)
+			forcetsne.force('tsne', function (alpha){
+				model.step();
+
+				let pos = model.getSolution();
+
+			centerx.domain(d3.extent(pos.map(d => d[0])));
+			centery.domain(d3.extent(pos.map(d => d[1])));
+
+			data.forEach((d,i) => {
+				d.x += alpha * (centerx(pos[i][0]) - d.x);
+				d.y += alpha * (centery(pos[i][1]) - d.y);
+			});
+		})
+		.force('collide', d3.forceCollide().radius(d => 10));
+
+		// Draw nodes
+		forcetsne.on('tick', function(){
+			let nodes = data.map((d,i) => {
+				return {
+					x: d.x,
+					y: d.y,
+					color: colorScale(d[d.length - 1]),
+					text: d[0]
+				};
+			});
+
+			draw(canvas, nodes);
+		});
+	})
+
+
+	</script>
+</body>
+</html>
