@@ -1,0 +1,28 @@
+---
+title: "lda"
+author: "Zehan Wang"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## LDA
+```{r}
+
+n<- dim(feature_data_text_1)[1]
+fd<- array(NA, c(n, 2))
+fd[,1]<- feature_data_text_1$msno
+fd[,2]<- apply(feature_data_text_1[,c(2,3,6:15)], 1, paste, sep=" ", collapse=" ")
+
+library(tm)
+library(topicmodels)
+fdcorpus<- VCorpus(VectorSource(fd[,2]))
+DTM <- DocumentTermMatrix(fdcorpus)
+TM <- LDA(DTM, 10, method="Gibbs", control=list(iter = 500, seed = 1234))
+terms(TM, 10)
+t_f<- as.factor(topics(TM))
+
+which.max(posterior(TM, DTM[2,])$topics)
+```
