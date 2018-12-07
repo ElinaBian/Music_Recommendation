@@ -1,0 +1,104 @@
+---
+title: "Rec"
+author: "Zehan Wang"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(stringr)
+
+ldak<- read.csv("Userid_and_cluster_id_21_cluster.csv")
+training<-read.csv("training.csv",stringsAsFactors = F)
+testing<-read.csv("testing.csv",stringsAsFactors = F)
+total<-rbind(training, testing)
+total<-total[-c(3,4,5,10:16)]
+
+```
+
+
+## example
+```{r}
+ldak0<- ldak[ldak$cluster_id==0, ]
+ldak0_song<- total[is.element(total$msno, ldak0$msno),]
+train0<- data.frame()
+test0<- data.frame()
+for (i in 1:nrow(ldak0)){
+  tot<- sum(ldak0_song$msno==ldak0$msno[i])
+  ldak0$song[i]<- tot
+  mid_train<- subset(ldak0_song,msno==ldak0$msno[i])
+  set.seed(2018)
+  train0<- rbind(train0, mid_train[sample(1:tot, round(tot*0.7)), ])}
+test0<- setdiff(ldak0_song, train0)
+P_song<- data.frame(matrix(0,length(unique(train0$song_id)),2))
+P_song[,1]<- unique(train0$song_id)
+for (i in 1:length(unique(train0$song_id))){
+  P_song[i,2]<- sum(train0$target[train0$song_id==P_song[i,1]]+1)
+}
+score1<- rep(NA, nrow(ldak0))
+score2<- rep(NA, nrow(ldak0))
+for (i in 1:nrow(ldak0)){
+  new_song<- subset(P_song, !(X1 %in% train0$song_id[train0$msno==ldak0$msno[i]]))
+  rec<- new_song[order(new_song[,2], decreasing = T),][1:10, ]
+  test_song1<- test0[test0$msno==ldak0$msno[i], ]
+  test_song2<- test_song1[test_song1$target==1, ]
+  score1[i]<- sum(rec[,1] %in% test_song1$song_id)/10
+  score2[i]<- sum(rec[,1] %in% test_song2$song_id)/10
+}
+mean(score1)
+mean(score2)
+```
+
+## all
+```{r}
+group_score1<- rep(NA, 21)
+group_score2<- rep(NA, 21)
+for (j in 0:20){
+  ldak0<- ldak[ldak$cluster_id==j, ]
+  ldak0_song<- total[is.element(total$msno, ldak0$msno),]
+  train0<- data.frame()
+  test0<- data.frame()
+  for (i in 1:nrow(ldak0)){
+    tot<- sum(ldak0_song$msno==ldak0$msno[i])
+    ldak0$song[i]<- tot
+    mid_train<- subset(ldak0_song,msno==ldak0$msno[i])
+    set.seed(2018)
+    train0<- rbind(train0, mid_train[sample(1:tot, round(tot*0.7)), ])}
+  test0<- setdiff(ldak0_song, train0)
+  P_song<- data.frame(matrix(0,length(unique(train0$song_id)),2))
+  P_song[,1]<- unique(train0$song_id)
+  for (i in 1:length(unique(train0$song_id))){
+    P_song[i,2]<- sum(train0$target[train0$song_id==P_song[i,1]]+1)
+  }
+  score1<- rep(NA, nrow(ldak0))
+  score2<- rep(NA, nrow(ldak0))
+  for (i in 1:nrow(ldak0)){
+    new_song<- subset(P_song, !(X1 %in% train0$song_id[train0$msno==ldak0$msno[i]]))
+    rec<- new_song[order(new_song[,2], decreasing = T),][1:10, ]
+    test_song1<- test0[test0$msno==ldak0$msno[i], ]
+    test_song2<- test_song1[test_song1$target==1, ]
+    score1[i]<- sum(rec[,1] %in% test_song1$song_id)/10
+    score2[i]<- sum(rec[,1] %in% test_song2$song_id)/10
+  }
+  group_score1[j+1]<-mean(score1)
+  group_score2[j+1]<-mean(score2)
+  print(j)
+}
+mean(group_score1)
+mean(group_score2)
+sum(table(ldak$cluster_id)*group_score1)/sum(table(ldak$cluster_id))
+sum(table(ldak$cluster_id)*group_score2)/sum(table(ldak$cluster_id))
+
+Error<- matrix(NA, 21,3)
+Error[,1]<- table(ldak$cluster_id)
+Error[,2]<- group_score1
+Error[,3]<- group_score2
+colnames(Error)<- c("Number of ID in Group", "All", "Target")
+write.csv(Error, file = "Error.csv")
+```
+
