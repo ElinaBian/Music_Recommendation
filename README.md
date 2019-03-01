@@ -114,7 +114,7 @@ Qui is our rating matrix. If we have m users and n songs, then we want to learn 
       $$J(y_i) = (q_i-Xy_i)W_i(q_i-Xy_i)^T + y_iy_i^T$$
 Note that we need regularization terms in order to avoid the overfitting the data. Ideally, regularization parameters need to be tuned using cross-validation in the dataset for algorithm to generalize better. Solutions for factor vectors are given as follows:
       
-      ![x_u = (YW_uY^T + I)^{-1}YW_uq_u]
+      $$x_u = (YW_uY^T + I)^{-1}YW_uq_u$$
       $$y_i = (X^TW_iX + I)^{-1}X^TW_iq_i$$
 Then, we can get the rating matrix between users and songs.
 
