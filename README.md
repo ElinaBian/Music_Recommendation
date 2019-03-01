@@ -28,7 +28,7 @@ The datasets we will be using in this project is from KKBox, which is Asia's lea
 
 First of all, we detected the dataset about users. There are outliers, such as negative values as well as values above 1000, in the age field. Meanwhile, there are 19932 records with 0 as age; this could be either outliers or missing values. After removing these values, we plotted in the age range 1-100 to show the real distribution. Figure 1 illustrates that the age distribution is skewed right, the mean age of user is around 35 years old. Though there is a lot of missing gender, Male and female are almost equal. 
 
-![figure 1](https://raw.githubusercontent.com/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_1.png)
+![figure 1](Experimental_Data_Analysis/final_figures/figure_1.png)
 
 Secondly, we dig information from the dataset about songs. From figure 2, which is created from Tableau, we can see that the songs in our train dataset mainly distributed in Asia and US. In other words, Chinese songs and English songs account for most of the songs. In addition, the pie chart under figure 3 shows the most popular genres; genre 465 has preponderant influence over the song dataset. Moreover, from the word-cloud in figure 4, we found out Jay Chow and May Day, the mainstays of Chinese Pop music, are the artists whose songs being listened the most repeat times. Thus we can infer this music application is used in China. Meanwhile, in order to make sure whether there is influence of song length on users’ preference, we plot the distribution of song length. Figure 5 shows the song length is mainly concentrated around 4 minutes, which is a normal length. 
 
