@@ -28,27 +28,27 @@ The datasets we will be using in this project is from KKBox, which is Asia's lea
 
 First of all, we detected the dataset about users. There are outliers, such as negative values as well as values above 1000, in the age field. Meanwhile, there are 19932 records with 0 as age; this could be either outliers or missing values. After removing these values, we plotted in the age range 1-100 to show the real distribution. Figure 1 illustrates that the age distribution is skewed right, the mean age of user is around 35 years old. Though there is a lot of missing gender, Male and female are almost equal. 
 
-![figure 1](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_1.png)
+![figure 1](https://raw.githubusercontent.com/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_1.png)
 
 Secondly, we dig information from the dataset about songs. From figure 2, which is created from Tableau, we can see that the songs in our train dataset mainly distributed in Asia and US. In other words, Chinese songs and English songs account for most of the songs. In addition, the pie chart under figure 3 shows the most popular genres; genre 465 has preponderant influence over the song dataset. Moreover, from the word-cloud in figure 4, we found out Jay Chow and May Day, the mainstays of Chinese Pop music, are the artists whose songs being listened the most repeat times. Thus we can infer this music application is used in China. Meanwhile, in order to make sure whether there is influence of song length on users’ preference, we plot the distribution of song length. Figure 5 shows the song length is mainly concentrated around 4 minutes, which is a normal length. 
 
-![figure 2](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_2.png)
+![figure 2](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_2.png)
 
-![figure 3](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_3.png)
+![figure 3](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_3.png)
 
-![figure 4](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_4.png)
+![figure 4](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_4.png)
 
-![figure 5](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_5.png)
+![figure 5](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_5.png)
 
 At the same time, in order to explore the relationship between genre and songs, we plot the Top 5 Repeatedly Listened Songs Distribution over Genres (figure 6), and discovered that the genre which includes more songs does not mean it will be repeatedly listened more times. Constructing the bridge between datasets of users and songs, we also pay attention to extract the correlations. From the plot about relationship between users’ age and genres they listened (figure 8), we found it is make sense that the age distribution is wider when the genre is more popular. The most popular genre is genre 465, and the age distribution of this genre is the widest. Meanwhile, in order to dig the connection the number of genre and the number of songs he or she listened, we created the scatter plot in terms of different age group (figure 9), and then we found there is a positive correlation between the number of songs and genres listened among every age group.
 
-![figure 6](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_6.png)
+![figure 6](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_6.png)
 
-![figure 7](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_7.jpg)
+![figure 7](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_7.jpg)
 
-![figure 8](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_8.png)
+![figure 8](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_8.png)
 
-![figure 9](https://github.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_9.png)
+![figure 9](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Experimental_Data_Analysis/final_figures/figure_9.png)
 
 
 # 4. Algorithms 
@@ -80,14 +80,14 @@ This algorithm’s logic is straightforward yet naive. It has its limitation. It
 Besides the traditional method stated above we also use another recommendation system for the new music users.
 First of all, we want to do the clustering for members and figuring out the optimal size of the groups they have. According to the data we have numerical data (ages, mean of the song lengths, the repeat ratio of the songs ID and the repeat ratio of the Genre ID) and text feature (language, artists information, song information and etc.). For the numeric data we use K-mean and Birch clustering algorithm to do the clustering (figure 10). For the text feature part we decide to use LDA topic clustering to finish the clustering.
 
-![figure 10](https://github.com/ElinaBian/Music_Recommendation/Algorithm_based_on_clustering/figure_10.png)
+![figure 10](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Algorithm_based_on_clustering/figure_10.png)
 
 Secondly, the tricky part is how to combine these two algorithms together. Thanks for the essay from the Cornell Library we can use a LDA_Kmeans method to handle with numeric and text feature data based on the previous data.
 The object similarity measure is derived from both numeric and categorical attributes. When applied to numeric data the algorithm is identical to k-means. In testing with real data, this algorithm has demonstrated a capability of partitioning data sets in the range of a hundred thousand records, described by more than 20 numeric and categorical attributes, into a 21 clusters in a couple of hours. We use K-prototype to combine two clustering algorithms together. The algorithm is built upon three processes, the initial prototypes selection, initial allocation, and re-allocation.
 
 We set clusters and find out the optimal K values for the clusters(figure 11). The optimal cluster number is 21 groups for the users.
 
-![figure 11](https://github.com/ElinaBian/Music_Recommendation/Algorithm_based_on_clustering/figure_11.png)
+![figure 11](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Algorithm_based_on_clustering/figure_11.png)
 
 After the clustering members and users we finally enter into the recommendation system for both old users based on the previous history and clusters information. For the new users, we might not do the prediction because we did not know their clusters, hence for the new enrolled users, they need to become ‘old’ user first in order to recommend applicable songs for them. 
 
@@ -128,7 +128,7 @@ Our final result of test error is 0.6775.
 
 From the plot, we can find that there is positive correlation between the numbers of user records and recommendation accuracy.
 
-![figure 12](https://github.com/ElinaBian/Music_Recommendation/Algorithm_based_on_Alternative_Least_Squares/figure_12.png)
+![figure 12](https://raw.githubusercontent.com/ElinaBian/Music_Recommendation/Algorithm_based_on_Alternative_Least_Squares/figure_12.png)
 
 # 5. Summary
 
