@@ -5,8 +5,6 @@ Adavanced Data Analysis Project --- Music Recommendation
 
 # 1. Introduction and Motivation
 
-    We now have 5 topics:
-
 Music Recommendation
 ----
 
